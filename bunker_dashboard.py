@@ -1,7 +1,16 @@
+import subprocess
+import sys
+
+# Попытка импортировать streamlit_extras, если не установлено — установить
+try:
+    from streamlit_extras.st_autorefresh import st_autorefresh
+except ModuleNotFoundError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "streamlit-extras==0.3.0"])
+    from streamlit_extras.st_autorefresh import st_autorefresh
+
 import streamlit as st
 import pandas as pd
 import os
-from streamlit_extras.st_autorefresh import st_autorefresh
 
 # Настройки страницы
 st.set_page_config(page_title="Бункер — Панель игроков", layout="wide")
